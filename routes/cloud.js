@@ -1,3 +1,4 @@
+var sanitizer = require('sanitizer');
 var express = require('express');
 var router = express.Router();
 var db=require('../database');
@@ -14,7 +15,7 @@ var get_cookies = function(request) {
 // another routes also appear here
 // this script to fetch data from MySQL databse table
 router.get('', function(req, res, next) {
-    var owner = get_cookies(req)['owner']
+    var owner = sanitizer.sanitize(get_cookies(req)['owner']);
     var sql='SELECT * FROM cloud WHERE owner = '+owner+'';
     db.query(sql, function (err, data, fields) {
     if (err) throw err;

@@ -83,7 +83,6 @@
   <body>
     <div id="mySidebar" class="sidebar">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">/</a>
-      <div style="margin-top: 65%;"></div>
       <a href="#">Cloud</a>
       <a href="#">Calendar</a>
       <hr style="width: 50%; color: white; margin-left: 10%;">
@@ -95,14 +94,24 @@
       <hr style="width: 50%; color: white; margin-left: 10%;">
       <a href="#">Messages</a>
       <a href="#">Phone</a>
+      <hr style="width: 50%; color: white; margin-left: 10%;">
+      <a href="#">Settings</a>
+      <a href="#">Sign out</a>
     </div>
 
     <div id="main">
       <button class="openbtn" onclick="openNav()">☰</button>
-      <h2>Welcome, <%= name %>.</h2>
+      <% if(userData.length!=0){ userData.forEach(function(data){ %>
+      <h2>Welcome, <%= data.name %>.</h2>
       <p>
         This is where you can view your recent actions.
       </p>
+      <% })} else{ %>
+        <h2>Error (1)</h2>
+        <p>
+          Unable to find user information.
+        </p>
+      <% } %>
     </div>
 
     <script>
