@@ -29,5 +29,9 @@ router.get('/c', function(req, res, next) {
   res.send("sent")
 });
 
+router.get('/styles/:file', function(req, res, next) {
+  res.sendFile(__dirname + 'resources/' + req.params.file)
+});
+
 
 module.exports = router;

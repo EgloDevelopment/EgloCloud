@@ -1,3 +1,4 @@
+<% userData.forEach(function(data){ %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,106 +13,20 @@
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="https://cdn.eglo.pw/styles/styles.css" rel="stylesheet" />
-    <style>
-      p, h1, h2, h3, h4, h5, h6, i, b {
-        color: white;
-        text-align: center;
-      }
-      .sidebar {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #111;
-        overflow-x: hidden;
-        transition: 0.5s;
-        padding-top: 60px;
-      }
-
-      .sidebar a {
-        padding: 8px 8px 8px 32px;
-        text-decoration: none;
-        font-size: 17px;
-        color: #818181;
-        display: block;
-        transition: 0.3s;
-      }
-
-      .sidebar a:hover {
-        color: #f1f1f1;
-      }
-
-      .sidebar .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
-      }
-
-      .openbtn {
-        font-size: 20px;
-        cursor: pointer;
-        background-color: #111;
-        color: white;
-        padding: 10px 15px;
-        border: none;
-      }
-
-      .openbtn:hover {
-        background-color: #444;
-      }
-
-      #main {
-        transition: margin-left 0.5s;
-        padding: 16px;
-      }
-
-      /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-      @media screen and (max-height: 450px) {
-        .sidebar {
-          padding-top: 15px;
-        }
-        .sidebar a {
-          font-size: 18px;
-        }
-      }
-    </style>
+    <link href="styles/styles.css" rel="stylesheet" />
   </head>
+
+
   <body>
-    <div id="mySidebar" class="sidebar">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">/</a>
-      <a href="#">Cloud</a>
-      <a href="#">Calendar</a>
-      <hr style="width: 50%; color: white; margin-left: 10%;">
-      <a href="#">Email</a>
-      <a href="#">Email Forward</a>
-      <hr style="width: 50%; color: white; margin-left: 10%;">
-      <a href="#">API</a>
-      <a href="#">API Docs</a>
-      <hr style="width: 50%; color: white; margin-left: 10%;">
-      <a href="#">Messages</a>
-      <a href="#">Phone</a>
-      <hr style="width: 50%; color: white; margin-left: 10%;">
-      <a href="#">Settings</a>
-      <a href="#">Sign out</a>
-    </div>
+    <%- include('sidebar'); -%>
+
 
     <div id="main">
       <button class="openbtn" onclick="openNav()">☰</button>
-      <% if(userData.length!=0){ userData.forEach(function(data){ %>
       <h2>Welcome, <%= data.name %>.</h2>
       <p>
         This is where you can view your recent actions.
       </p>
-      <% })} else{ %>
-        <h2>Error (1)</h2>
-        <p>
-          Unable to find user information.
-        </p>
-      <% } %>
     </div>
 
     <script>
@@ -133,3 +48,4 @@
     ></script>
   </body>
 </html>
+<% }) %>
