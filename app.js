@@ -6,6 +6,7 @@ var logger = require("morgan");
 const rateLimit = require("express-rate-limit");
 var indexRouter = require("./routes/index");
 var cloudRouter = require("./routes/cloud");
+var usersRouter = require("./routes/users");
 
 var app = express();
 
@@ -24,6 +25,7 @@ const apiRequestLimiter = rateLimit({
 //app.use(apiRequestLimiter);
 app.use("/", indexRouter);
 app.use("/cloud", cloudRouter);
+app.use("/users", usersRouter);
 
 app.set("views", path.join(__dirname, "views"));
 

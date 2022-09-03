@@ -2,8 +2,7 @@ var sanitizer = require("sanitizer");
 var express = require("express");
 var router = express.Router();
 var db = require("../database");
-
-
+var validate = require("../middleware/auth");
 
 var get_cookies = function (request) {
   var cookies = {};
@@ -15,9 +14,9 @@ var get_cookies = function (request) {
   return cookies;
 };
 
-router.get("", function (req, res, next) {
-  var owner = sanitizer.sanitize(get_cookies(req)["owner"]);
-  var sql = "SELECT * FROM users WHERE owner = " + owner + "";
+router.get("", validate, function (req, res, next) {
+  var token = sanitizer.sanitize(get_cookies(req)["token"]);
+  var sql = "SELECT * FROM users WHERE token = " + token + "";
   db.query(sql, function (err, data, fields) {
     if (err) throw err;
     res.render("home", { Name: data[0].name, userData: data });
@@ -25,8 +24,22 @@ router.get("", function (req, res, next) {
 });
 
 router.get("/c", function (req, res, next) {
-  res.cookie("owner", "1");
+  res.cookie("token", "123");
   res.send("sent");
+});
+
+
+
+
+
+//-----------------------------FOR THOSE WHO THINK THEY ARE HACKERMANS---------------------------//
+
+router.get("/register", function (req, res, next) {
+  res.redirect('/users/register');
+});
+
+router.get("/login", function (req, res, next) {
+  res.redirect('/users/login');
 });
 
 module.exports = router;
