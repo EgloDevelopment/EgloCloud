@@ -2,7 +2,8 @@ var sanitizer = require("sanitizer");
 var express = require("express");
 var router = express.Router();
 var db = require("../database");
-const cookieParser = require("cookie-parser");
+
+
 
 var get_cookies = function (request) {
   var cookies = {};
