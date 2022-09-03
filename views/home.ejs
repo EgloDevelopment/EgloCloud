@@ -13,17 +13,26 @@
       </p>
       <div class="position-relative">
         <div class="position-absolute top-50 start-50 translate-middle" style="margin-top: 200px;">
-        <div class="card" style="width: 200px; background-color: #202c3c; height: 225px;">
+        <div class="card" style="width: 200px; background-color: #202c3c; height: 255px;">
           <div class="card-body">
+            <div style="text-align:center;">
+              <style>
+                a {text-decoration: underline; text-decoration-color: red; color: white;}
+              </style>
           <% if(userData.length=1){ userData.forEach(function(data){ %>
-            <p><%=data.recent1 %></p>
-            <p><%=data.recent2 %></p>
-            <p><%=data.recent3 %></p>
-            <p><%=data.recent4 %></p>
-            <p><%=data.recent5 %></p>
+            <a href="/<%=data.recent1 %>"><%=data.recent1 %></a>
+            <br><br>
+            <a href="/<%=data.recent2 %>"><%=data.recent2 %></a>
+            <br><br>
+            <a href="/<%=data.recent3 %>"><%=data.recent3 %></a>
+            <br><br>
+            <a href="/<%=data.recent4 %>"><%=data.recent4 %></a>
+            <br><br>
+            <a href="/<%=data.recent5 %>"><%=data.recent5 %></a>
             <% })} else{ %>
               <p>No recents.</p>
             <% } %>
+          </div>
           </div>
         </div>
         </div>
