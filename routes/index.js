@@ -1,37 +1,31 @@
-var sanitizer = require('sanitizer');
-var express = require('express');
+var sanitizer = require("sanitizer");
+var express = require("express");
 var router = express.Router();
-var db=require('../database');
-const cookieParser = require('cookie-parser')
+var db = require("../database");
+const cookieParser = require("cookie-parser");
 
-var get_cookies = function(request) {
+var get_cookies = function (request) {
   var cookies = {};
-  request.headers && request.headers.cookie.split(';').forEach(function(cookie) {
-    var parts = cookie.match(/(.*?)=(.*)$/)
-    cookies[ parts[1].trim() ] = (parts[2] || '').trim();
-  });
+  request.headers &&
+    request.headers.cookie.split(";").forEach(function (cookie) {
+      var parts = cookie.match(/(.*?)=(.*)$/);
+      cookies[parts[1].trim()] = (parts[2] || "").trim();
+    });
   return cookies;
 };
-// another routes also appear here
-// this script to fetch data from MySQL databse table
-router.get('', function(req, res, next) {
-    var owner = sanitizer.sanitize(get_cookies(req)['owner']);
-    var sql='SELECT * FROM cloud WHERE owner = '+owner+'';
-    db.query(sql, function (err, data, fields) {
+
+router.get("", function (req, res, next) {
+  var owner = sanitizer.sanitize(get_cookies(req)["owner"]);
+  var sql = "SELECT * FROM users WHERE owner = " + owner + "";
+  db.query(sql, function (err, data, fields) {
     if (err) throw err;
-    res.render('home', {userData: data});
+    res.render("home", { Name: "Toaster", userData: data });
   });
 });
 
-
-router.get('/c', function(req, res, next) {
+router.get("/c", function (req, res, next) {
   res.cookie("owner", "1");
-  res.send("sent")
+  res.send("sent");
 });
-
-router.get('/styles/:file', function(req, res, next) {
-  res.sendFile(__dirname + 'resources/' + req.params.file)
-});
-
 
 module.exports = router;
