@@ -3,6 +3,7 @@ var express = require("express");
 var router = express.Router();
 var db = require("../database");
 var validate = require("../middleware/auth");
+const passport = require("passport");
 
 var get_cookies = function (request) {
   var cookies = {};

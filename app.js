@@ -1,3 +1,5 @@
+const port = 3000;
+
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
@@ -50,11 +52,13 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
+  //res.cookie("token", "1");
   res.render("error");
 });
 
-app.listen(3000, function () {
-  console.log("info", "Server is running at port : " + 3000);
+
+app.listen(port, function () {
+  console.log("info", "Server is running at port: " + port);
 });
 
 module.exports = app;
