@@ -19,7 +19,7 @@ router.get("", function (req, res, next) {
   var sql = "SELECT * FROM users WHERE owner = " + owner + "";
   db.query(sql, function (err, data, fields) {
     if (err) throw err;
-    res.render("home", { Name: "Toaster", userData: data });
+    res.render("home", { Name: data[0].name, userData: data });
   });
 });
 

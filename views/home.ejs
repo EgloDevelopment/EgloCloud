@@ -11,8 +11,24 @@
       <p>
         This is where you can view your recent actions.
       </p>
-    </div>
-
+      <div class="position-relative">
+        <div class="position-absolute top-50 start-50 translate-middle" style="margin-top: 200px;">
+        <div class="card" style="width: 200px; background-color: #202c3c; height: 225px;">
+          <div class="card-body">
+          <% if(userData.length=1){ userData.forEach(function(data){ %>
+            <p><%=data.recent1 %></p>
+            <p><%=data.recent2 %></p>
+            <p><%=data.recent3 %></p>
+            <p><%=data.recent4 %></p>
+            <p><%=data.recent5 %></p>
+            <% })} else{ %>
+              <p>No recents.</p>
+            <% } %>
+          </div>
+        </div>
+        </div>
+      </div>
+      </div>
     <script>
       function openNav() {
         document.getElementById("mySidebar").style.width = "250px";

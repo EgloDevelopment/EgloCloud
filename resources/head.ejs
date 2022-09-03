@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Eglo Cloud</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.eglo.pw/images/icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.eglo.pw/images/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.eglo.pw/images/icons/favicon-16x16.png" />
+    <link rel="manifest" href="https://cdn.eglo.pw/images/icons/site.webmanifest" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -88,5 +92,16 @@
         font-size: 18px;
       }
     }
+
+    @media (max-width: 1550px) {
+        .hidden-mobile {
+          display: none;
+        }
+      }
+      @media (min-width: 1550px) {
+        .show-mobile {
+          display: none;
+        }
+      }
   </style>
 </html>

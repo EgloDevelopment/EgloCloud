@@ -5,7 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const rateLimit = require("express-rate-limit");
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/cloud");
+var cloudRouter = require("./routes/cloud");
 
 var app = express();
 
@@ -22,7 +22,7 @@ const apiRequestLimiter = rateLimit({
 // view engine setup
 //app.use(apiRequestLimiter);
 app.use("/", indexRouter);
-app.use("/cloud", usersRouter);
+app.use("/cloud", cloudRouter);
 
 app.set("views", path.join(__dirname, "views"));
 

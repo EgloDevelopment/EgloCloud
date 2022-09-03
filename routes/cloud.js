@@ -17,7 +17,7 @@ var get_cookies = function (request) {
 // this script to fetch data from MySQL databse table
 router.get("", function (req, res, next) {
   var owner = sanitizer.sanitize(get_cookies(req)["owner"]);
-  var sql = "SELECT * FROM cloud WHERE owner = " + owner + "";
+  var sql = "SELECT * FROM users WHERE owner = " + owner + "";
   db.query(sql, function (err, data, fields) {
     if (err) throw err;
     res.render("cloud/cloud", { userData: data });
