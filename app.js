@@ -2,17 +2,20 @@ const port = 3000;
 
 var createError = require("http-errors");
 var express = require("express");
+//var session = require("express-session");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const rateLimit = require("express-rate-limit");
+
 var indexRouter = require("./routes/index");
+var stylesRouter = require("./routes/styles");
 
 var app = express();
 
 const apiRequestLimiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
-  max: 10, // limit each IP to 2 requests per windowMs
+  max: 10, // limit each IP to 10 requests per windowMs
   handler: function (req, res /*next*/) {
     return res.status(429).json({
       error: "You sent too many requests. Please wait a while then try again",
@@ -24,6 +27,7 @@ const apiRequestLimiter = rateLimit({
 // view engine setup
 //app.use(apiRequestLimiter);
 app.use("/", indexRouter);
+app.use("/styles", stylesRouter);
 
 app.set("views", path.join(__dirname, "views"));
 

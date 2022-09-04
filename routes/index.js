@@ -29,14 +29,17 @@ router.get("/c", function (req, res, next) {
   res.send("sent");
 });
 
+router.get("/like_button.js", function (req, res, next) {
+  res.sendFile('C:/Users/Toaster/Documents/EgloCloud/views/like_button.js');
+});
 
 
 
 
 //-----------------------------FOR THOSE WHO THINK THEY ARE HACKERMANS---------------------------//
 
-router.get("/register", function (req, res, next) {
-  res.redirect('/users/register');
+router.get("/register/:promo", function (req, res, next) {
+  res.redirect('/users/register/' + req.params.promo);
 });
 
 router.get("/login", function (req, res, next) {
