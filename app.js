@@ -61,4 +61,7 @@ app.listen(port, function () {
   console.log("info", "Server is running at port: " + port);
 });
 
+
+
+global.appRoot = path.resolve(__dirname);
 module.exports = app;
