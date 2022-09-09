@@ -1,19 +1,34 @@
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 import './App.css';
+import Dashboard from './components/Dashboard/Dashboard';
+import Login from './components/Login/Login';
+import Preferences from './components/Preferences/Preferences';
+import useToken from './funni-scripts/UseToken';
 
 function App() {
-  return (
-      <div className="App">
-        <header className="App-header">
-          <button onClick={callApi}>Call API</button>
-        </header>
-      </div>
-  );
-}
+  const { token, setToken } = useToken();
 
-function callApi() {
-    fetch('http://localhost:3001/details', { method: 'GET' })
-        .then(data => data.json())
-        .then(json => alert(JSON.stringify(json)))
+  if(!token) {
+    return <Login setToken={setToken} />
+  }
+
+  return (
+    <div className="wrapper">
+      <h1>Application</h1>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route path="/preferences">
+            <Preferences />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;

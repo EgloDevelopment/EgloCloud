@@ -9,7 +9,7 @@ const port = 3001;
 
 app.use(cors());
 
-mongoose.connect('mongodb+srv://username:password@main.a6uehiu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://root:Qr76sivt9K9Smv@main.a6uehiu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -26,10 +26,18 @@ db.once("open", function () {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/details', async (req, res) => {
-    // const user = await userModel.findOne({id: 123});
-    const user = await userModel.find({});
+app.use('/details', async (req, res) => {
+    const user = await userModel.findOne({id: 123});
+    //const user = await userModel.find({});
     res.send(user);
 });
+
+app.use('/login', (req, res) => {
+    //const user = await userModel.find({});
+    res.send({
+        token: 'test123'
+    });
+});
+
 
 app.listen(port, () => console.log(`Hello world app listening on port ${port}!`))
