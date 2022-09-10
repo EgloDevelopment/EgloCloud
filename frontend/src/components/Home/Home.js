@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+
+
 class App extends Component {
   constructor() {
     super();
@@ -24,8 +26,14 @@ class App extends Component {
       <div>
         <script>
           document.addEventListener("DOMContentLoaded", function()
-          {this.goPremium()});
+          {
+            this.goPremium()
+          }
+            document.getElementById("myDIV").style.display = "none";
+          );
+
         </script>
+
 
         <h1>{this.state.text}</h1>
       </div>

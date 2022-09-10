@@ -1,7 +1,6 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
@@ -15,5 +14,8 @@
     "express": "^4.17.1",
     "mongoose": "^6.5.5",
     "nodemon": "^2.0.19"
-  }
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "description": ""
 }

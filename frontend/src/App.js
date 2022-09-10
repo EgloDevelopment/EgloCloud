@@ -5,6 +5,8 @@ import './App.css';
 import Dashboard from './components/Dashboard/Dashboard';
 import Login from './components/Login/Login';
 import Preferences from './components/Preferences/Preferences';
+import Home from './components/Home/Home';
+
 import useToken from './funni-scripts/UseToken';
 
 function App() {
@@ -16,9 +18,11 @@ function App() {
 
   return (
     <div className="wrapper">
-      <h1>Application</h1>
       <BrowserRouter>
         <Switch>
+        <Route path="/">
+            <Home />
+          </Route>
           <Route path="/dashboard">
             <Dashboard />
           </Route>
