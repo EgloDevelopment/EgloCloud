@@ -1,7 +1,7 @@
 export default function Page() {
   return (
     <>
-			<p>Home</p>
+			<p>404</p>
     </>
   )
 }

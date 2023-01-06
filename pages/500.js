@@ -1,7 +1,7 @@
 export default function Page() {
   return (
     <>
-			<p>Home</p>
+			<p>500</p>
     </>
   )
 }
